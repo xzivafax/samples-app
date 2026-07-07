@@ -12,57 +12,46 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: "3.10"
 
-      - name: Install packages
+      - name: Install system packages
         run: |
-          sudo apt update
+          sudo apt-get update
 
-          sudo apt install -y \
+          sudo apt-get install -y \
             git zip unzip openjdk-17-jdk \
-            autoconf automake libtool pkg-config \
-            zlib1g-dev libncurses5-dev libncursesw5-dev \
-            cmake libffi-dev libssl-dev
+            autoconf automake libtool libltdl-dev m4 pkg-config \
+            zlib1g-dev \
+            libncurses5-dev \
+            libncursesw5-dev \
+            cmake \
+            libffi-dev \
+            libssl-dev
 
-          python -m pip install --upgrade pip
-          pip install Cython==0.29.37
-          pip install buildozer==1.5.0
-
-      - name: Install Android SDK
-        uses: android-actions/setup-android@v3
-
-      - name: Install Android packages
+      - name: Upgrade pip
         run: |
-          sdkmanager --install \
-            "platform-tools" \
-            "platforms;android-34" \
-            "build-tools;34.0.0" \
-            "ndk;28.0.13004108"
+          python -m pip install --upgrade pip wheel setuptools
+          pip install Cython==0.29.37
 
-      - name: Clean old Buildozer
+      # Ставим последние версии Buildozer и p4a, а не релиз 1.5.0
+      - name: Install Buildozer
+        run: |
+          pip install git+https://github.com/kivy/buildozer.git
+          pip install git+https://github.com/kivy/python-for-android.git
+
+      - name: Clean old cache
         run: |
           rm -rf ~/.buildozer
           rm -rf ~/.gradle
 
-      - name: Set environment
-        run: |
-          echo "ANDROID_HOME=$ANDROID_SDK_ROOT" >> $GITHUB_ENV
-          echo "ANDROIDSDK=$ANDROID_SDK_ROOT" >> $GITHUB_ENV
-          echo "ANDROIDNDK=$ANDROID_SDK_ROOT/ndk/28.0.13004108" >> $GITHUB_ENV
-
-      - name: Show versions
-        run: |
-          echo $ANDROID_HOME
-          echo $ANDROIDNDK
-
-          ls $ANDROID_SDK_ROOT/ndk
-
       - name: Build APK
+        env:
+          USE_CCACHE: 1
         run: |
           buildozer android debug
 
