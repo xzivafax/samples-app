@@ -18,8 +18,8 @@ source.include_exts = py,png,jpg,kv,atlas,ttf
 # (str) Application versioning
 version = 0.1
 
-# (list) Requirements
-requirements = python3==3.10.14,kivy==2.2.1,requests
+# (list) Requirements — убрали версию python3, оставили только имя
+requirements = python3,kivy==2.2.1,requests
 
 # (str) Presplash of the application
 # presplash.filename = %(source.dir)s/data/presplash.png
@@ -36,15 +36,18 @@ android.api = 31
 # (int) Minimum API level
 android.minapi = 21
 
-# (str) Android NDK version (используем версию 28c, так как 23b слишком старая)
-android.ndk = 28c
+# (str) Android NDK version
+android.ndk = 23b
 
 # (str) Android SDK version
 android.sdk = 31
 
-# --- ДОБАВЛЯЕМ СТРОКИ ДЛЯ АВТОМАТИЧЕСКОГО ПРИНЯТИЯ ЛИЦЕНЗИИ И build-tools ---
+# --- Важные строки для автоматического принятия лицензий и версии Python ---
 android.build_tools = 31.0.0
 android.accept_sdk_license = True
+
+# Явно задаём версию Python для хоста (чтобы совпадала с целевой)
+android.python_version = 3.10.14
 
 # (str) Android Gradle plugin version
 android.gradle_dependencies = 'com.android.support:multidex:1.0.3'
