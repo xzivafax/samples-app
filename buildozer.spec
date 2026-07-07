@@ -14,8 +14,8 @@ android.permissions = INTERNET, WRITE_EXTERNAL_STORAGE
 
 android.api = 31
 android.minapi = 21
-android.ndk = 25c
-# android.build_tools = 31.0.0  # закомментировано – buildozer сам установит нужную версию
+android.ndk = 23b
+android.sdk = 31
 android.accept_sdk_license = True
 android.use_androidx = True
 
