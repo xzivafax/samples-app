@@ -36,13 +36,13 @@ android.api = 31
 # (int) Minimum API level
 android.minapi = 21
 
-# (str) Android NDK version
-android.ndk = 23b
+# (str) Android NDK version (используем версию 28c, так как 23b слишком старая)
+android.ndk = 28c
 
 # (str) Android SDK version
 android.sdk = 31
 
-# --- ДОБАВЛЕНЫ ДВЕ ВАЖНЫЕ СТРОКИ ДЛЯ АВТОМАТИЧЕСКОГО ПРИНЯТИЯ ЛИЦЕНЗИИ ---
+# --- ДОБАВЛЯЕМ СТРОКИ ДЛЯ АВТОМАТИЧЕСКОГО ПРИНЯТИЯ ЛИЦЕНЗИИ И build-tools ---
 android.build_tools = 31.0.0
 android.accept_sdk_license = True
 
