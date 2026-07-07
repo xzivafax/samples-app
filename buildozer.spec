@@ -14,7 +14,7 @@ android.permissions = INTERNET, WRITE_EXTERNAL_STORAGE
 
 android.api = 31
 android.minapi = 21
-android.ndk = 23b
+android.ndk = 28c
 android.sdk = 31
 android.accept_sdk_license = True
 android.use_androidx = True
