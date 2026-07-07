@@ -12,12 +12,11 @@ requirements = python3,kivy==2.2.1,requests
 
 android.permissions = INTERNET, WRITE_EXTERNAL_STORAGE
 
-# Используем системный SDK (уже есть в раннере)
-android.sdk_path = /usr/local/lib/android/sdk
 android.api = 31
 android.minapi = 21
 android.ndk = 25c
-android.build_tools = 31.0.0
+# android.build_tools = 31.0.0  # закомментировано – buildozer сам установит нужную версию
+android.accept_sdk_license = True
 android.use_androidx = True
 
 [buildozer]
