@@ -46,8 +46,7 @@ jobs:
 
       - name: Clean old cache
         run: |
-          rm -rf ~/.buildozer
-          rm -rf ~/.gradle
+
 
       - name: Build APK
         env:
