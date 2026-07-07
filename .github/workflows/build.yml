@@ -17,23 +17,11 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Install system dependencies
+      - name: Install buildozer and dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get install -y git zip unzip openjdk-17-jdk autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo-dev cmake libffi-dev libssl-dev
-
-      - name: Install buildozer
-        run: |
-          pip install buildozer
-
-      - name: Accept Android SDK licenses (fix)
-        run: |
-          # Создаём dummy директорию для лицензий, если нужно
-          mkdir -p ~/.android
-          touch ~/.android/repositories.cfg
-          # Принудительно принимаем лицензии (этот шаг может не понадобиться, т.к. buildozer автоматически принимает при android.accept_sdk_license = True)
-          # но на всякий случай
-          yes | ~/.buildozer/android/platform/android-sdk/tools/bin/sdkmanager --licenses || true
+          sudo apt update
+          sudo apt install -y git zip unzip openjdk-17-jdk autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo-dev cmake libffi-dev libssl-dev
+          pip install buildozer==1.5.0
 
       - name: Build APK
         run: |
