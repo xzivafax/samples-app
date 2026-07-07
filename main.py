@@ -2,7 +2,7 @@ import kivy
 kivy.require('2.1.0')
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
-from kivy.properties import NumericProperty, StringProperty, ListProperty
+from kivy.properties import NumericProperty, StringProperty
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.recycleview import RecycleView
 from kivy.uix.recycleview.views import RecycleDataViewBehavior
@@ -75,7 +75,7 @@ def init_db():
     conn.commit()
     conn.close()
 
-# ---------- Функции для работы с БД (упрощённые) ----------
+# ---------- Функции для работы с БД ----------
 def get_all_clients():
     conn = sqlite3.connect(DB_NAME)
     cur = conn.cursor()
@@ -155,13 +155,6 @@ def add_trade_point(code, client_id, address, comment):
         return False
     finally:
         conn.close()
-
-def add_collection_if_not_exists(name):
-    conn = sqlite3.connect(DB_NAME)
-    cur = conn.cursor()
-    cur.execute("INSERT OR IGNORE INTO collections (name) VALUES (?)", (name,))
-    conn.commit()
-    conn.close()
 
 def get_collections():
     conn = sqlite3.connect(DB_NAME)
@@ -317,8 +310,7 @@ class ReportScreen(Screen):
         self.show_needed_report()
 
     def show_needed_report(self):
-        # Здесь можно реализовать полную логику из десктопной версии
-        # Для примера – заглушка
+        # Пример отчёта – можно расширить логикой
         txt = "Отчёт о необходимости привезти:\n"
         txt += "Клиент А | Коллекция Х | нужно\nКлиент Б | Коллекция Y | есть\n"
         self.ids.report_label.text = txt
@@ -350,7 +342,6 @@ class ReportScreen(Screen):
 
 class SamplesApp(App):
     def get_all_clients_simple(self):
-        """Возвращает список клиентов для использования в Spinner"""
         return get_all_clients()
 
     def build(self):
