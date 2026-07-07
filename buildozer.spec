@@ -15,8 +15,12 @@ android.permissions = INTERNET, WRITE_EXTERNAL_STORAGE
 android.api = 31
 android.minapi = 21
 android.ndk = 28c
+android.sdk = 31
+android.python_version = 3.10.14
 android.accept_sdk_license = True
 android.use_androidx = True
+android.gradle_dependencies = 'com.android.support:multidex:1.0.3'
+android.gradle_plugin_version = 7.4.2
 
 [buildozer]
 log_level = 2
