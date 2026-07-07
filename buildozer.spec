@@ -42,6 +42,10 @@ android.ndk = 23b
 # (str) Android SDK version
 android.sdk = 31
 
+# --- ДОБАВЛЕНЫ ДВЕ ВАЖНЫЕ СТРОКИ ДЛЯ АВТОМАТИЧЕСКОГО ПРИНЯТИЯ ЛИЦЕНЗИИ ---
+android.build_tools = 31.0.0
+android.accept_sdk_license = True
+
 # (str) Android Gradle plugin version
 android.gradle_dependencies = 'com.android.support:multidex:1.0.3'
 
