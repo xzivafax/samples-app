@@ -22,5 +22,5 @@ android.minapi = 23
 android.ndk = 28b
 android.accept_sdk_license = True
 
-# если есть main.py
+# РµСЃР»Рё РµСЃС‚СЊ main.py
 source.exclude_dirs = venv,.venv,bin,.git,__pycache__
